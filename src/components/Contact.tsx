@@ -1,69 +1,63 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "./ui/button";
-
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
+import { renderFormField, FormData, formSchema } from "@/utils/renderFormField";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
+  const form = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      firstname: "",
+      lastname: "",
+      email: "",
+      message: ""
+    }
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: Add form submission logic here
+  const onSubmit = async (values: FormData) => {
+    try {
+      // TODO: Add submit handling
+      console.log(values);
+
+      toast.success("Message sent successfully!", {
+        description: "I'll get back to you soon."
+      });
+
+      form.reset();
+    } catch (error) {
+      toast.error("Failed to send message", {
+        description: "Please try again later."
+      });
+    }
   };
 
   return (
     <section id="contact" className="py-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold mb-12 text-center">Get in touch</h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            />
-          </div>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">E-mail</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            />
-          </div>
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700">Your message here</label>
-            <textarea
-              id="message"
-              name="message"
-              rows={4}
-              required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            />
-          </div>
-          <div>
-            <Button variant="outline" size="default">Submit</Button>
-          </div>
-        </form>
+        <h2 className="text-3xl font-bold mb-12 text-center">Contact me :)</h2>
+
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-4">
+              {renderFormField(form.control, 'firstname', 'First Name', 'Your first name')}
+              {renderFormField(form.control, 'lastname', 'Last Name', 'Your last name')}
+            </div>
+
+            {renderFormField(form.control, 'email', 'Email', 'Your email address')}
+            {renderFormField(form.control, 'message', 'Message', 'Tell me about your project or inquiry', 'textarea')}
+
+            <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+              {form.formState.isSubmitting ? "Sending..." : "Send Message"}
+            </Button>
+          </form>
+        </Form>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default Contact;
