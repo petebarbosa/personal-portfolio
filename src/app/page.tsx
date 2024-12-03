@@ -3,17 +3,21 @@ import Hero from "@/components/Hero";
 import Experiences from "@/components/Experiences";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import FloatingMouseWrapper from "@/components/FloatingMouseWrapper";
+
+// TODO: add orientation check for mobile
+// TODO: add scroll animation
+// TODO: add vw-full for all sections
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="relative min-h-screen">
       <Navbar />
       <Hero />
       <Experiences />
       <Projects />
       <Contact />
-      <Footer />
+      <FloatingMouseWrapper />
     </main>
   );
 }
