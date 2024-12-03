@@ -2,7 +2,6 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { renderFormField, FormData, formSchema } from "@/utils/renderFormField";
@@ -19,20 +18,8 @@ const Contact = () => {
   });
 
   const onSubmit = async (values: FormData) => {
-    try {
-      // TODO: Add submit handling
-      console.log(values);
-
-      toast.success("Message sent successfully!", {
-        description: "I'll get back to you soon."
-      });
-
-      form.reset();
-    } catch (error) {
-      toast.error("Failed to send message", {
-        description: "Please try again later."
-      });
-    }
+    // TODO: Add submit handling
+    console.log(values);
   };
 
   return (
