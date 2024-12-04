@@ -34,7 +34,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-200 ${isScrolled ? "bg-white shadow-sm" : "bg-transparent"}`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-200 ${isScrolled ? "bg-white/75 shadow-sm" : "bg-transparent"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 items-center">
         <div className="flex justify-center h-16 items-center">
           <div className="hidden md:block">
@@ -43,7 +43,7 @@ const Navbar = () => {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`px-3 py-2 hover:text-gray-600 ${linkVisibility[index] ? "opacity-100 duration-500" : "opacity-0"}`}
+                  className={`px-3 py-2 transition ease-in-out hover:scale-110 duration-300 hover:text-gray-500 ${linkVisibility[index] ? "opacity-100 duration-500" : "opacity-0"}`}
                 >
                   {link.label}
                 </a>
