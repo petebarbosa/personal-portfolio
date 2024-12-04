@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from "react";
 
 const Navbar = () => {
@@ -13,19 +14,40 @@ const Navbar = () => {
   }, []);
 
 
+  const [linkVisibility, setLinkVisibility] = useState([false, false, false, false]);
+
+  const links = [
+    { href: "#profile", label: "Home" },
+    { href: "#experience", label: "Experiences" },
+    { href: "#projects", label: "Projects" },
+    { href: "#contact", label: "Contact" }
+  ];
+
+  useEffect(() => {
+    links.forEach((_, index) => {
+      setTimeout(() => {
+        setLinkVisibility((prev) =>
+          prev.map((visible, i) => (i === index ? true : visible))
+        );
+      }, index * 500);
+    });
+  }, []);
+
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white shadow-md" : "bg-transparent"}`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-200 ${isScrolled ? "bg-white shadow-sm" : "bg-transparent"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 items-center">
-        <div className="flex justify-between h-16 items-center">
-          <div className="flex-shrink-0">
-            <span className="text-xl font-bold">Pedro Barbosa</span>
-          </div>
+        <div className="flex justify-center h-16 items-center">
           <div className="hidden md:block">
-            <div className="ml-10 felx items-baselin space-x-4">
-              <a href="#home" className="px-3 py-2 hover:text-gray-600">Home</a>
-              <a href="#experience" className="px-3 py-2 hover:text-gray-600">Experience</a>
-              <a href="#projects" className="px-3 py-2 hover:text-gray-600">Projects</a>
-              <a href="#contact" className="px-3 py-2 hover:text-gray-600">Contact</a>
+            <div className="flex items-baseline space-x-4">
+              {links.map((link, index) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`px-3 py-2 hover:text-gray-600 ${linkVisibility[index] ? "opacity-100 duration-500" : "opacity-0"}`}
+                >
+                  {link.label}
+                </a>
+              ))}
             </div>
           </div>
         </div>
