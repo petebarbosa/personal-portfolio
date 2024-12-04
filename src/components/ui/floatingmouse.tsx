@@ -20,7 +20,7 @@ export const FloatingMouse = ({ hidden }: FloatingMouseProps) => {
         ease: "easeInOut",
       }}
     >
-      <Mouse size={22} strokeWidth={0.5} />
+      <Mouse size={22} strokeWidth={1} />
     </motion.div>
   )
 }
