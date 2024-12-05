@@ -1,4 +1,4 @@
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/appSideBar";
 import Hero from "@/components/hero";
 import Experiences from "@/components/experiences";
 import Projects from "@/components/projects";
@@ -9,7 +9,6 @@ import FloatingMouseWrapper from "@/components/floatingMouseWrapper";
 export default function Home() {
   return (
     <main className="relative min-h-screen">
-      <Navbar />
       <Hero />
       <Experiences />
       <Projects />

@@ -4,7 +4,7 @@ import avatarImage from "@/app/assets/avatar.png";
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import { calculateExperience } from "@/utils/calculateExperience";
 import { AtSign, MapPinHouse, Linkedin, Github, Send, Scale } from "lucide-react";
-import SocialLink from "./ui/sociallink";
+import SocialLink from "@/components/ui/socialLink";
 
 
 const Hero = () => {

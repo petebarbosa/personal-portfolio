@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const Navbar = () => {
+const AppSideBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -56,4 +56,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default AppSideBar;
