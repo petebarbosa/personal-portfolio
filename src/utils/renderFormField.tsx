@@ -1,5 +1,5 @@
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea";
+import { Textarea } from "@/components/ui/textArea";
 import { Input } from "@/components/ui/input";
 import { Control, FieldValues, Path } from "react-hook-form";
 import { z } from "zod";
