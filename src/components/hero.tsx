@@ -1,11 +1,11 @@
 "use client";
 
 import avatarImage from "@/app/assets/avatar.png";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import { calculateExperience } from "@/utils/calculateExperience";
-import { Button } from "./ui/button";
-import { AtSign, MapPinHouse, Linkedin, Github, Send } from "lucide-react";
-import { motion } from "motion/react";
+import { AtSign, MapPinHouse, Linkedin, Github, Send, Scale } from "lucide-react";
+import SocialLink from "./ui/sociallink";
+
 
 const Hero = () => {
   return (
@@ -33,38 +33,22 @@ const Hero = () => {
               <p className="text-gray-600">Brazil, RJ</p>
             </div>
             <div className="flex space-x-2">
-              <a
-                className="transition ease-in-out hover:scale-125 duration-300"
+              <SocialLink
                 href="https://www.linkedin.com/in/pvbb250689/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Linkedin size={24} strokeWidth={0.75} />
-              </a>
-              <a
-                className="transition ease-in-out hover:scale-125 duration-300"
+                icon={<Linkedin size={30} strokeWidth={0.75} />}
+              />
+              <SocialLink
                 href="https://github.com/petebarbosa"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github size={24} strokeWidth={0.75} />
-              </a>
-              <a
-                className="transition ease-in-out hover:scale-125 duration-300"
+                icon={<Github size={30} strokeWidth={0.75} />}
+              />
+              <SocialLink
                 href=""
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <AtSign size={24} strokeWidth={0.75} />
-              </a>
-              <a
-                className="transition ease-in-out hover:scale-125 duration-300"
+                icon={<AtSign size={30} strokeWidth={0.75} />}
+              />
+              <SocialLink
                 href="https://t.me/Pedrovbb"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Send size={24} strokeWidth={0.75} />
-              </a>
+                icon={<Send size={30} strokeWidth={0.75} />}
+              />
             </div>
           </div>
         </div>

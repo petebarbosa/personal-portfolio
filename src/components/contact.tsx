@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { renderFormField, FormData, formSchema } from "@/utils/renderFormField";
+import { motion } from "motion/react";
+
 
 const Contact = () => {
   const form = useForm<FormData>({
@@ -37,9 +39,14 @@ const Contact = () => {
             {renderFormField(form.control, 'email', 'Email', 'Your email address')}
             {renderFormField(form.control, 'message', 'Message', 'Tell me about your project or inquiry', 'textarea')}
 
-            <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-              {form.formState.isSubmitting ? "Sending..." : "Send Message"}
-            </Button>
+            <motion.div
+              whileHover={{ scale: 1.025 }}
+              whileTap={{ scale: 0.975 }}
+            >
+              <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+                {form.formState.isSubmitting ? "Sending..." : "Send Message"}
+              </Button>
+            </motion.div>
           </form>
         </Form>
       </div>

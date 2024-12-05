@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { FloatingMouse } from "./ui/floatingmouse";
+import { FloatingMouse } from "./ui/floatingMouse";
 
 const FloatingMouseWrapper = () => {
   const [isMouseHidden, setIsMouseHidden] = useState(false);
