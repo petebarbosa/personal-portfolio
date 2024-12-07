@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import replyImage from "@/app/assets/reply.png";
+// import replyVideo from "@/app/assets/reply.mp4";
+import ouroImage from "@/app/assets/ouro.png";
+// import ouroVideo from "@/app/assets/ouro.mp4";
 import { Card, CardHeader, CardTitle, CardDescription } from "./ui/card";
-import replyVideo from "@/app/assets/reply.gif";
-import ouroVideo from "@/app/assets/ouro.gif";
 import { motion } from "motion/react";
 import { Carousel, CarouselItem, CarouselContent, CarouselNext, CarouselPrevious } from "./ui/carousel";
 
@@ -11,7 +13,8 @@ import { Carousel, CarouselItem, CarouselContent, CarouselNext, CarouselPrevious
 const experiences = [
   {
     company: "Reply - CERC",
-    srcImage: replyVideo,
+    srcImage: replyImage,
+    // animatedVideo: replyVideo,
     pageLink: "https://www.reply.com/en",
     position: "Ruby on Rails analist",
     period: "Oct, 2021 - Sep, 2024",
@@ -19,7 +22,62 @@ const experiences = [
   },
   {
     company: "Ouro do Montes",
-    srcImage: ouroVideo,
+    srcImage: ouroImage,
+    // animatedVideo: ouroVideo,
+    pageLink: "https://www.ourodosmontes.com.br/",
+    position: "Ruby on Rails developer",
+    period: "May, 2024 - June, 2024",
+    techStack: []
+  },
+  {
+    company: "Ouro do Montes",
+    srcImage: ouroImage,
+    // animatedVideo: ouroVideo,
+    pageLink: "https://www.ourodosmontes.com.br/",
+    position: "Ruby on Rails developer",
+    period: "May, 2024 - June, 2024",
+    techStack: []
+  },
+  {
+    company: "Ouro do Montes",
+    srcImage: ouroImage,
+    // animatedVideo: ouroVideo,
+    pageLink: "https://www.ourodosmontes.com.br/",
+    position: "Ruby on Rails developer",
+    period: "May, 2024 - June, 2024",
+    techStack: []
+  },
+  {
+    company: "Ouro do Montes",
+    srcImage: ouroImage,
+    // animatedVideo: ouroVideo,
+    pageLink: "https://www.ourodosmontes.com.br/",
+    position: "Ruby on Rails developer",
+    period: "May, 2024 - June, 2024",
+    techStack: []
+  },
+  {
+    company: "Ouro do Montes",
+    srcImage: ouroImage,
+    // animatedVideo: ouroVideo,
+    pageLink: "https://www.ourodosmontes.com.br/",
+    position: "Ruby on Rails developer",
+    period: "May, 2024 - June, 2024",
+    techStack: []
+  },
+  {
+    company: "Ouro do Montes",
+    srcImage: ouroImage,
+    // animatedVideo: ouroVideo,
+    pageLink: "https://www.ourodosmontes.com.br/",
+    position: "Ruby on Rails developer",
+    period: "May, 2024 - June, 2024",
+    techStack: []
+  },
+  {
+    company: "Ouro do Montes",
+    srcImage: ouroImage,
+    // animatedVideo: ouroVideo,
     pageLink: "https://www.ourodosmontes.com.br/",
     position: "Ruby on Rails developer",
     period: "May, 2024 - June, 2024",
@@ -35,32 +93,32 @@ const Experiences = () => {
         <h2 className="text-4xl font-bold mb-12 text-center">Experiences</h2>
         <div className="relative">
           <div className="flex space-x-6 max-h-svh">
-            <Carousel>
+            <Carousel className="w-full max-w-xs">
               <CarouselContent>
-                {experiences.map((exp, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{ scale: 1.075 }}
-                  >
-                    <CarouselItem className="overflow-visible">
-                      <Card className="max-w-sm" >
-                        <CardHeader>
-                          <a href={exp.pageLink}>
+                {experiences.slice(0, 5).map((exp, index) => (
+                  <CarouselItem key={index}>
+                    <div className="p-1">
+                      <Card>
+                        <CardTitle className="flex aspect-square items-center justify-center p-6">
+                          <a href={exp.pageLink} className="block">
                             <Image
-                              className="rounded-t-xl mb-4"
+                              className="rounded-lg mb-4"
                               src={exp.srcImage}
-                              height={400}
-                              width={400}
-                              alt="Image"
+                              height={200}
+                              width={200}
+                              alt={exp.company}
                             />
                           </a>
-                        </CardHeader>
-                        <CardTitle>{exp.company}</CardTitle>
-                        <CardDescription>{exp.period}</CardDescription>
-                        <CardDescription>{exp.position}</CardDescription>
+                          <div className="text-center">
+                            <CardTitle className="text-4xl font-semibold">{exp.company}</CardTitle>
+                            <CardDescription>
+                              {exp.period}, {exp.position}
+                            </CardDescription>
+                          </div>
+                        </CardTitle>
                       </Card>
-                    </CarouselItem>
-                  </motion.div>
+                    </div>
+                  </CarouselItem>
                 ))}
               </CarouselContent>
               <CarouselPrevious />
@@ -69,7 +127,7 @@ const Experiences = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 
