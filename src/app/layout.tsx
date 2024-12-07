@@ -28,9 +28,9 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <SidebarProvider>
+          {children}
           <AppSideBar />
           <SidebarTrigger />
-          {children}
         </SidebarProvider>
       </body>
     </html>
