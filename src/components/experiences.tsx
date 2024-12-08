@@ -9,6 +9,7 @@ import { Card, CardHeader, CardTitle, CardDescription } from "./ui/card";
 import { motion } from "motion/react";
 import { Carousel, CarouselItem, CarouselContent, CarouselNext, CarouselPrevious } from "./ui/carousel";
 
+// TODO: Enable mp4 loading
 
 const experiences = [
   {
@@ -30,12 +31,12 @@ const experiences = [
     techStack: []
   },
   {
-    company: "Ouro do Montes",
-    srcImage: ouroImage,
-    // animatedVideo: ouroVideo,
-    pageLink: "https://www.ourodosmontes.com.br/",
-    position: "Ruby on Rails developer",
-    period: "May, 2024 - June, 2024",
+    company: "Reply - CERC",
+    srcImage: replyImage,
+    // animatedVideo: replyVideo,
+    pageLink: "https://www.reply.com/en",
+    position: "Ruby on Rails analist",
+    period: "Oct, 2021 - Sep, 2024",
     techStack: []
   },
   {
@@ -48,30 +49,12 @@ const experiences = [
     techStack: []
   },
   {
-    company: "Ouro do Montes",
-    srcImage: ouroImage,
-    // animatedVideo: ouroVideo,
-    pageLink: "https://www.ourodosmontes.com.br/",
-    position: "Ruby on Rails developer",
-    period: "May, 2024 - June, 2024",
-    techStack: []
-  },
-  {
-    company: "Ouro do Montes",
-    srcImage: ouroImage,
-    // animatedVideo: ouroVideo,
-    pageLink: "https://www.ourodosmontes.com.br/",
-    position: "Ruby on Rails developer",
-    period: "May, 2024 - June, 2024",
-    techStack: []
-  },
-  {
-    company: "Ouro do Montes",
-    srcImage: ouroImage,
-    // animatedVideo: ouroVideo,
-    pageLink: "https://www.ourodosmontes.com.br/",
-    position: "Ruby on Rails developer",
-    period: "May, 2024 - June, 2024",
+    company: "Reply - CERC",
+    srcImage: replyImage,
+    // animatedVideo: replyVideo,
+    pageLink: "https://www.reply.com/en",
+    position: "Ruby on Rails analist",
+    period: "Oct, 2021 - Sep, 2024",
     techStack: []
   },
   {
@@ -95,29 +78,27 @@ const Experiences = () => {
           <div className="flex space-x-6 max-h-svh">
             <Carousel className="w-full max-w-xs">
               <CarouselContent>
-                {experiences.slice(0, 5).map((exp, index) => (
+                {experiences.map((exp, index) => (
                   <CarouselItem key={index}>
-                    <div className="p-1">
+                    <motion.div whileHover={{ scale: 1.05 }}>
                       <Card>
-                        <CardTitle className="flex aspect-square items-center justify-center p-6">
-                          <a href={exp.pageLink} className="block">
+                        <a href={exp.pageLink} className="block">
+                          <CardHeader className="relative aspect-square overflow-hidden">
                             <Image
-                              className="rounded-lg mb-4"
+                              className="absolute rounded-t-xl inset-0 object-cover w-full h-full"
                               src={exp.srcImage}
-                              height={200}
-                              width={200}
                               alt={exp.company}
                             />
-                          </a>
-                          <div className="text-center">
-                            <CardTitle className="text-4xl font-semibold">{exp.company}</CardTitle>
+                          </CardHeader>
+                          <div className="p-4 text-center">
+                            <CardTitle className="text-2xl">{exp.company}</CardTitle>
                             <CardDescription>
                               {exp.period}, {exp.position}
                             </CardDescription>
                           </div>
-                        </CardTitle>
+                        </a>
                       </Card>
-                    </div>
+                    </motion.div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
@@ -127,7 +108,7 @@ const Experiences = () => {
           </div>
         </div>
       </div>
-    </section >
+    </section>
   );
 };
 
